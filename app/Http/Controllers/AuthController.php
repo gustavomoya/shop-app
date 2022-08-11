@@ -180,11 +180,14 @@ class AuthController extends Controller
                 ['password' => bcrypt($request->password)]
             ));
 
+
             $credentials = request(['email', 'password']);
 
             $token = auth()->attempt($credentials);
 
             $data = $this->createNewToken($token);
+
+            DB::commit();
 
             return response()->json(array_merge(
                 ['message' => 'User successfully registered'],
