@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Validator;
 
+/**
+ *
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ * ),
+ * @package App\Http\Controllers
+ */
 class ProductController extends Controller
 {
     private ProductService $productService;
@@ -56,7 +65,10 @@ class ProductController extends Controller
      *                      ),
      *                ),
      *         )
-     *     )
+     *     ),
+     *     security={
+     *         {"bearerAuth": {}}
+     *     }
      * )
      *
      * @return \Illuminate\Http\Response
@@ -127,7 +139,10 @@ class ProductController extends Controller
      *     @OA\Response(
      *         response=422,
      *         description="Invalid input"
-     *     )
+     *     ),
+     *     security={
+     *         {"bearerAuth": {}}
+     *     }
      * )
      *
      * @return \Illuminate\Http\Response
@@ -197,7 +212,10 @@ class ProductController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Product not found"
-     *     )
+     *     ),
+     *     security={
+     *         {"bearerAuth": {}}
+     *     }
      * )
      *
      * @return \Illuminate\Http\Response
@@ -284,7 +302,10 @@ class ProductController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized"
-     *     )
+     *     ),
+     *     security={
+     *         {"bearerAuth": {}}
+     *     }
      * )
      *
      * @return \Illuminate\Http\Response
@@ -345,7 +366,10 @@ class ProductController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized"
-     *     )
+     *     ),
+     *     security={
+     *         {"bearerAuth": {}}
+     *     }
      * )
      */
     public function destroy($id)
